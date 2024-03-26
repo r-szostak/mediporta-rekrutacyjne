@@ -1,6 +1,7 @@
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
-import { Navbar } from "./components/navbar"
+import { Loading } from "./components/loading"
+
 import { useTags } from "./hooks/use-tags"
 
 function App() {
@@ -10,11 +11,10 @@ function App() {
 
   if (isLoading) {
     //TODO
-    return <div>isLoading</div>
+    return <Loading />
   }
   return (
     <div className="w-full">
-      <Navbar />
       <DataTable columns={columns} data={tags.items} />
     </div>
   )
