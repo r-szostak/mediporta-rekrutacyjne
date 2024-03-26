@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table"
-import { Button } from "./ui/button"
+import { Button } from "../../ui/button"
 import { ArrowUpDown } from "lucide-react"
 
 // This type is used to define the shape of our data.

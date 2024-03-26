@@ -1,12 +1,12 @@
-import { columns } from "./components/columns"
-import { DataTable } from "./components/data-table"
+import { columns } from "./components/data-table/utils/columns"
+import { DataTable } from "./components/data-table/data-table"
 import { Error } from "./components/error"
 import { Loading } from "./components/loading"
 
-import { useTags } from "./hooks/use-tags"
+import { useGetTags } from "./services/use-get-tags"
 
 function App() {
-  const { data: tags, isLoading, isError } = useTags()
+  const { data: tags, isLoading, isError } = useGetTags()
 
   console.log(tags)
 
