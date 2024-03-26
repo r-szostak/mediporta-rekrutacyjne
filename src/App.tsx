@@ -1,5 +1,6 @@
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
+import { Error } from "./components/error"
 import { Loading } from "./components/loading"
 
 import { useTags } from "./hooks/use-tags"
@@ -10,8 +11,11 @@ function App() {
   console.log(tags)
 
   if (isLoading) {
-    //TODO
     return <Loading />
+  }
+
+  if (isError) {
+    return <Error />
   }
   return (
     <div className="w-full">

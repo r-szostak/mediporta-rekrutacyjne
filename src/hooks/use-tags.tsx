@@ -5,7 +5,7 @@ const fetcher = (url: string) => axios.get(url).then((res) => res.data)
 
 export const useTags = () => {
   const { data, error, isLoading } = useSWR(
-    `https://api.stackexchange.com/2.3/tags?order=desc&sort=popular&site=stackoverflow`,
+    `https://api.stackexchange.com/2.3/ts?order=desc&sort=popular&site=stackoverflow`,
     fetcher
   )
 
