@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/table"
 import { useState } from "react"
 import { Button } from "./ui/button"
+import { Label } from "./ui/label"
+import { Input } from "./ui/input"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -45,23 +47,38 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="rounded-md border max-w-4xl my-10 mx-auto">
-      <div className="flex items-center justify-center space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Poprzednia strona
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Następna strona
-        </Button>
+      <div className=" flex items-center flex-col md:flex-row justify-between p-4">
+        <div className="grid w-full max-w-sm items-center gap-1.5">
+          <Label htmlFor="number">Liczba elementów na stronie</Label>
+          <Input
+            type="number"
+            id="number"
+            placeholder="10"
+            defaultValue={table.getState().pagination.pageSize}
+            onChange={(e) => {
+              const size = e.target.value ? Number(e.target.value) : 0
+              table.setPageSize(size)
+            }}
+          />
+        </div>
+        <div className=" space-x-2 py-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Poprzednia strona
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Następna strona
+          </Button>
+        </div>
       </div>
       <Table>
         <TableHeader>
@@ -99,7 +116,7 @@ export function DataTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                Nie znaleziono danych.
               </TableCell>
             </TableRow>
           )}
