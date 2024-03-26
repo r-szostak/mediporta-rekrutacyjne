@@ -1,8 +1,7 @@
 import axios from "axios"
 import useSWR from "swr"
 
-const baseURL =
-  "https://api.stackexchange.com/2.3/tags?order=desc&sort=popular&site=stackoverflow"
+const baseURL = "https://api.stackexchange.com/2.3/tags"
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data)
 
