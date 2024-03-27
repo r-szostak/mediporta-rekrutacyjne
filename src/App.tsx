@@ -4,22 +4,42 @@ import { Error } from "./components/error"
 import { Loading } from "./components/loading"
 
 import { useGetTags } from "./services/use-get-tags"
+import { useState } from "react"
+import { PaginationState, SortingState } from "@tanstack/react-table"
 
 function App() {
-  const { data: tags, isLoading, isError } = useGetTags()
+  const [sorting, setSorting] = useState<SortingState>([
+    {
+      desc: true,
+      id: "count",
+    },
+  ])
+
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  })
+
+  const { data: tags, isLoading, isError } = useGetTags(sorting, pagination)
 
   console.log(tags)
-
+  if (isError) {
+    return <Error />
+  }
   if (isLoading) {
     return <Loading />
   }
 
-  if (isError) {
-    return <Error />
-  }
   return (
     <div className="w-full">
-      <DataTable columns={columns} data={tags.items} />
+      <DataTable
+        columns={columns}
+        data={tags.items}
+        sorting={sorting}
+        setSorting={setSorting}
+        pagination={pagination}
+        setPagination={setPagination}
+      />
     </div>
   )
 }

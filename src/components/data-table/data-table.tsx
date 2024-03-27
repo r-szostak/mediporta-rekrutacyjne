@@ -1,11 +1,10 @@
 import {
   ColumnDef,
+  OnChangeFn,
   PaginationState,
   SortingState,
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
@@ -17,7 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { useState } from "react"
 import { Button } from "../ui/button"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
@@ -25,32 +23,35 @@ import { Input } from "../ui/input"
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  sorting?: SortingState
+  setSorting?: OnChangeFn<SortingState>
+  pagination?: PaginationState
+  setPagination?: OnChangeFn<PaginationState>
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  sorting,
+  setSorting,
+  pagination,
+  setPagination,
 }: DataTableProps<TData, TValue>) {
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  })
-  const [sorting, setSorting] = useState<SortingState>([])
-
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
     onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
+    manualSorting: true,
+    manualPagination: true,
+    pageCount: -1,
     state: {
       pagination,
       sorting,
     },
   })
-
+  console.log(sorting)
   return (
     <div className="rounded-md border max-w-4xl my-10 mx-auto">
       <div className=" flex items-center flex-col md:flex-row justify-between p-4">
@@ -62,7 +63,7 @@ export function DataTable<TData, TValue>({
             placeholder="10"
             defaultValue={table.getState().pagination.pageSize}
             onChange={(e) => {
-              const size = e.target.value ? Number(e.target.value) : 0
+              const size = e.target.value ? Number(e.target.value) : 1
               table.setPageSize(size)
             }}
           />
