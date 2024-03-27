@@ -8,7 +8,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - Configurable number of elements per page through a numeric field above the table/list.
 - Selection of sorting field and direction.
 - Appropriate states for loading data and errors during data retrieval.
-- Utilization of ready-made UI component library - Shadcn-ui.
+- Utilization of ready-made UI component library - Shadcn-ui (components in components/ui folder)
 - Integration of TanstackTable for displaying data.
 - Data fetching using Axios and useSWR.
 - Presentation of components using Storybook.
