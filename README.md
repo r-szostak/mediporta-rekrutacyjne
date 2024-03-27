@@ -19,7 +19,7 @@ To run the project, you can use the following npm commands:
 
 1. `npm ci` - Installs project dependencies.
 2. `npm start` - Starts the development server.
-3. `npm run storybook` - Starts Storybook for component presentation and testing.
+3. `npm run storybook` - Starts Storybook for component presentation.
 
 ## Official Plugins and Resources
 
