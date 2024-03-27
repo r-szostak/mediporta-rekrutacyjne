@@ -51,7 +51,7 @@ export function DataTable<TData, TValue>({
       sorting,
     },
   })
-  console.log(sorting)
+
   return (
     <div className="rounded-md border max-w-4xl my-10 mx-auto">
       <div className=" flex items-center flex-col md:flex-row justify-between p-4">

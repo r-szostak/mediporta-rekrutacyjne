@@ -30,8 +30,6 @@ export const useGetTags = (
 
   const tagsURL = buildURL(sorting)
 
-  console.log(tagsURL)
-
   const { data, error, isLoading } = useSWR(tagsURL, fetcher)
 
   return {

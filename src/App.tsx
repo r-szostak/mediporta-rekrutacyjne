@@ -22,7 +22,6 @@ function App() {
 
   const { data: tags, isLoading, isError } = useGetTags(sorting, pagination)
 
-  console.log(tags)
   if (isError) {
     return <Error />
   }
