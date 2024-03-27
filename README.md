@@ -2,29 +2,38 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Paginated table or list of tags with the count of associated posts (field count).
+- Configurable number of elements per page through a numeric field above the table/list.
+- Selection of sorting field and direction.
+- Appropriate states for loading data and errors during data retrieval.
+- Utilization of ready-made UI component library - Shadcn-ui.
+- Integration of TanstackTable for displaying data.
+- Data fetching using Axios and useSWR.
+- Presentation of components using Storybook.
 
-## Expanding the ESLint configuration
+## Running the Project
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To run the project, you can use the following npm commands:
 
-- Configure the top-level `parserOptions` property like this:
+1. `npm ci` - Installs project dependencies.
+2. `npm start` - Starts the development server.
+3. `npm run storybook` - Starts Storybook for component presentation and testing.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Official Plugins and Resources
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) - Official Vite plugin for React.
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) - Official Vite plugin for React using SWC for Fast Refresh.
+- [Axios](https://axios-http.com/) - Promise-based HTTP client for the browser and Node.js.
+- [useSWR](https://swr.vercel.app/) - React Hooks library for data fetching.
+- [Storybook](https://storybook.js.org/) - Tool for developing UI components in isolation.
+- [Shadcn UI](https://ui.shadcn.com/docs) - Component library used for UI components.
+- [React TanstackTable](https://tanstack.com/table/latest/docs/introduction) - Library used for displaying data in tables.
+
+## Expanding the ESLint Configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules. Here are the steps to expand the ESLint configuration:
+
+1. Configure the top-level `parserOptions` property to include TypeScript settings.
+2. Replace `plugin:@types
